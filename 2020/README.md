@@ -24,5 +24,5 @@ This repository contains solutions for [Advent of Code 2020](https://adventofcod
 * Day 20: ✓
 * Day 21: ✓
 * Day 22: ✓
-* Day 23: ⏲
+* Day 23: ✓
 * Day 24: ⏲
