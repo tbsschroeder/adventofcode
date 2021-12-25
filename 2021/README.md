@@ -3,7 +3,7 @@
 This repository contains solutions for [Advent of Code 2021](https://adventofcode.com/2021/) written in Python 3.
 
 * Day 01: ✓
-* Day 02: x
+* Day 02: ✓
 * Day 03: x
 * Day 04: x
 * Day 05: x

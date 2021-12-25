@@ -6,6 +6,7 @@ def part1():
     no_data = [int(line) for line in data]
     depth = [no_data[i - 1] < line for i, line in enumerate(no_data)]
     print(sum(depth))
+    return
 
 
 def part2():
