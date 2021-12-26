@@ -4,7 +4,7 @@ This repository contains solutions for [Advent of Code 2021](https://adventofcod
 
 * Day 01: ✓
 * Day 02: ✓
-* Day 03: ✓x
+* Day 03: ✓
 * Day 04: x
 * Day 05: x
 * Day 06: x
