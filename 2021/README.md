@@ -10,7 +10,7 @@ This repository contains solutions for [Advent of Code 2021](https://adventofcod
 * Day 06: ✓
 * Day 07: ✓
 * Day 08: ✓
-* Day 09: x
+* Day 09: ✓
 * Day 10: x
 * Day 11: x
 * Day 12: x
