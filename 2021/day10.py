@@ -1,45 +1,62 @@
 from lib import get_input
 
+corrupted = []
+incomplete = []
+
 
 def is_match(open_char, close_char):
-    return open_char == '(' and close_char == ')' or \
-        open_char == '{' and close_char == '}' or \
-        open_char == '[' and close_char == ']' or \
-        open_char == '<' and close_char == '>'
+    closer = {'(': ')', '[': ']', '{': '}', '<': '>'}
+    return closer[open_char] == close_char
 
-def get_score(char):
-    if char == ')':
-        return 3
-    if char == ']':
-        return 57
-    if char == '}':
-        return 1197
-    if char == '>':
-        return 25137
 
-def parse(line):
-    tree = []
-    for char in list(line):
+def get_first_error_score(line):
+    stack = []
+    values = {
+        ')': 3,
+        ']': 57,
+        '}': 1197,
+        '>': 25137
+    }
+    for char in line:
         if char in ['(', '[', '{', '<']:
-            tree.append(char)
-        elif is_match(tree[-1], char):
-            tree = tree[:-1]
+            stack.append(char)
+        elif is_match(stack[-1], char):
+            stack.pop()
         else:
-            return get_score(char)
+            corrupted.append(line)
+            return values[char]
+    incomplete.append(line)
     return 0
+
+
+def get_closing_character_values(line):
+    cost = {')': 1, ']': 2, '}': 3, '>': 4}
+    opener = {')': '(', ']': '[', '}': '{', '>': '<'}
+    closer = {'(': ')', '[': ']', '{': '}', '<': '>'}
+
+    stack = []
+    score = 0
+    for char in line:
+        if char in closer:
+            stack.append(char)
+        elif stack.pop() != opener[char]:
+            break
+    else:
+        while len(stack) > 0:
+            char = closer[stack.pop()]
+            score = score * 5 + cost[char]
+        return score
 
 
 def part1():
     data = get_input('./input/input10.txt', '\n')
-    score = 0
-    for line in data:
-        score += parse(line)
-    print(score)
+    scores = [get_first_error_score(list(line)) for line in data]
+    print(sum(scores))
 
 
 def part2():
-    data = get_input('./input/input10.txt', '\n')
-    print(0)
+    scores = [get_closing_character_values(list(line)) for line in incomplete]
+    print(sorted(scores)[len(scores) // 2])
 
 
 if __name__ == "__main__":
