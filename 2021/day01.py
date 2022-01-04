@@ -6,7 +6,6 @@ def part1():
     no_data = [int(line) for line in data]
     depth = [no_data[i - 1] < line for i, line in enumerate(no_data)]
     print(sum(depth))
-    return
 
 
 def part2():
@@ -16,7 +15,6 @@ def part2():
     pairs = zip(windows, windows[1:])
     depth = [y - x for x, y in pairs if y - x > 0]
     print(len(depth))
-    return
 
 
 if __name__ == "__main__":
