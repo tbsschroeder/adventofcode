@@ -18,7 +18,7 @@ This repository contains solutions for [Advent of Code 2021](https://adventofcod
 * Day 14: ✓
 * Day 15: ✓
 * Day 16: ✓
-* Day 17: x
+* Day 17: ✓
 * Day 18: x
 * Day 19: x
 * Day 20: x
