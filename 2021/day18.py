@@ -1,9 +1,7 @@
-from lib import get_input
 import itertools
 import json
 import math
 from functools import reduce
-from os import path
 
 
 def add_left(x, n):
