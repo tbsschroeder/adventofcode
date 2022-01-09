@@ -105,6 +105,6 @@ def part1and2():
 
 if __name__ == "__main__":
     data = get_input('./input/input19.txt', '\n\n')
-    lines = [[[tuple(int(v) for v in l.split(','))] for l in l[1:]] for l in [l.strip().split('\n') for l in data]]
+    lines = [[[tuple(int(v) for v in n.split(','))] for n in m[1:]] for m in [line.strip().split('\n') for line in data]]
 
     part1and2()

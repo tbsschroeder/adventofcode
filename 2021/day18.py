@@ -65,6 +65,7 @@ def magnitude(x):
         return x
     return 3 * magnitude(x[0]) + 2 * magnitude(x[1])
 
+
 def part1():
     data = list(map(json.loads, open('./input/input18.txt').read().splitlines()))
     return magnitude(reduce(add, data))
@@ -73,6 +74,7 @@ def part1():
 def part2():
     data = list(map(json.loads, open('./input/input18.txt').read().splitlines()))
     return max(magnitude(add(a, b)) for a, b in itertools.permutations(data, 2))
+
 
 if __name__ == "__main__":
     print(part1())
