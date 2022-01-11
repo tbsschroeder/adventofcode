@@ -1,7 +1,7 @@
 from lib import get_input
 
 
-def part1():
+def part1(pos1, pos2):
     score1, score2 = 0, 0
     dice = [1, 2, 3]
     roll_dice = 0
@@ -36,5 +36,5 @@ def part2():
 
 if __name__ == "__main__":
     pos1, pos2 = [int(l.split(': ')[1]) for l in get_input('./input/input21.txt', '\n')]
-    part1()
+    part1(pos1, pos2)
     part2()
