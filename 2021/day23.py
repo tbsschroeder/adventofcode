@@ -1,12 +1,143 @@
-from lib import get_input
+ROOMS = {
+    'A': 2,
+    'B': 4,
+    'C': 6,
+    'D': 8,
+}
+ROOM_POSITIONS = set(ROOMS.values())
+MOVE_COSTS = {
+    'A': 1,
+    'B': 10,
+    'C': 100,
+    'D': 1000,
+}
+
+
+def can_reach(board, start_pos, end_pos):
+    a = min(start_pos, end_pos)
+    b = max(start_pos, end_pos)
+    for pos in range(a, b + 1):
+        if pos == start_pos:
+            continue
+        if pos in ROOM_POSITIONS:
+            continue
+        if board[pos] != '.':
+            return False
+    return True
+
+
+def roo_only_contains_goal(board, piece, dest_pos):
+    assert dest_pos in ROOM_POSITIONS
+    inRoom = board[dest_pos]
+    return len(inRoom) == inRoom.count('.') + inRoom.count(piece)
+
+
+def getPieceFromRoom(room):
+    for c in room:
+        if c != '.':
+            return c
+
+
+def possible_moves(board, pos):
+    piece = board[pos]
+    # print(board, pos, piece)
+    if pos not in ROOM_POSITIONS:
+        if can_reach(board, pos, ROOMS[piece]) and roo_only_contains_goal(board, piece, ROOMS[piece]):
+            return [ROOMS[piece]]
+        return []
+
+    movingLetter = getPieceFromRoom(piece)
+    if pos == ROOMS[movingLetter] and roo_only_contains_goal(board, movingLetter, pos):
+        return []
+
+    possible = []
+    for dest in range(len(board)):
+        if dest == pos:
+            continue
+        if dest in ROOM_POSITIONS and ROOMS[movingLetter] != dest:
+            continue
+        if ROOMS[movingLetter] == dest:
+            if not roo_only_contains_goal(board, movingLetter, dest):
+                continue
+        if can_reach(board, pos, dest):
+            possible.append(dest)
+    return possible
+
+
+def add_to_room(letter, room):
+    room = list(room)
+    dist = room.count('.')
+    assert dist != 0
+    room[dist - 1] = letter
+    return ''.join(room), dist
+
+
+def move(board, pos, dest):
+    new_board = board[:]
+    dist = 0
+    movingLetter = getPieceFromRoom(board[pos])
+    if len(board[pos]) == 1:
+        new_board[pos] = '.'
+    else:
+        new_room = ''
+        found = False
+        for c in board[pos]:
+            if c == '.':
+                dist += 1
+                new_room += c
+            elif not found:
+                new_room += '.'
+                dist += 1
+                found = True
+            else:
+                new_room += c
+        new_board[pos] = new_room
+
+    dist += abs(pos - dest)
+
+    if len(board[dest]) == 1:
+        new_board[dest] = movingLetter
+        return new_board, dist * MOVE_COSTS[movingLetter]
+    else:
+        new_board[dest], addl_dist = add_to_room(movingLetter, board[dest])
+        dist += addl_dist
+        return new_board, dist * MOVE_COSTS[movingLetter]
+
+
+def solve(board):
+    states = {tuple(board): 0}
+    queue = [board]
+    while queue:
+        # print(len(queue))
+        board = queue.pop()
+        for pos, piece in enumerate(board):
+            if getPieceFromRoom(piece) is None:
+                continue
+            dests = possible_moves(board, pos)
+            # print('{} ({}) can move to {}'.format(piece, pos, dests))
+            for dest in dests:
+                new_board, addl_cost = move(board, pos, dest)
+                new_cost = states[tuple(board)] + addl_cost
+                new_board_tuple = tuple(new_board)
+                cost = states.get(new_board_tuple, 9999999)
+                if new_cost < cost:
+                    # print(board, '->', new_board, ':', new_cost)
+                    states[new_board_tuple] = new_cost
+                    queue.append(new_board)
+
+    return states
 
 
 def part1():
-    data = get_input('./input/input23.txt', '\n')
+    board = ['.', '.', 'CD', '.', 'CD', '.', 'AB', '.', 'BA', '.', '.']
+    states = solve(board)
+    print(states[('.', '.', 'AA', '.', 'BB', '.', 'CC', '.', 'DD', '.', '.')])
 
 
 def part2():
-    data = get_input('./input/input23.txt', '\n')
+    board = ['.', '.', 'CDDD', '.', 'CCBD', '.', 'ABAB', '.', 'BACA', '.', '.']
+    states = solve(board)
+    print(states[('.', '.', 'AAAA', '.', 'BBBB', '.', 'CCCC', '.', 'DDDD', '.', '.')])
 
 
 if __name__ == "__main__":

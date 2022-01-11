@@ -73,6 +73,6 @@ def part2(commands):
 
 
 if __name__ == "__main__":
-    data = [get_command(line) for line in  get_input('./input/input22.txt', '\n')]
+    data = [get_command(line) for line in get_input('./input/input22.txt', '\n')]
     part1(data)
     part2(data)
