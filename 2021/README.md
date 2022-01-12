@@ -25,5 +25,5 @@ This repository contains solutions for [Advent of Code 2021](https://adventofcod
 * Day 21: ✓
 * Day 22: ✓
 * Day 23: ✓
-* Day 24: x
+* Day 24: ✓
 * Day 25: x
