@@ -1,4 +1,4 @@
-# Advent of Code 2020
+# Advent of Code 2021
 
 This repository contains solutions for [Advent of Code 2021](https://adventofcode.com/2021/) written in Python 3.
 
