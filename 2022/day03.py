@@ -1,31 +1,16 @@
 from lib import get_input
 
 
-def split_list(alist, wanted_parts=1):
-    length = len(alist)
-    return [alist[i * length // wanted_parts: (i + 1) * length // wanted_parts]
-            for i in range(wanted_parts)]
-
-
 def get_prio(c):
-    print(c)
-    if c.isupper():
-        return ord(c) - ord('A') + 27
-    else:
-        return ord(c) - ord('a') + 1
+    return ord(c) - (38 if c.isupper() else 96)
 
 
 def part1():
-    rucksacks = [line for line in get_input('./input/input03.txt', '\n')]
-    compartments = []
-    for rucksack in rucksacks:
-        [list1, list2] = split_list(rucksack, 2)
-        compartments.append(list(set(list1).intersection(list2))[0])
-    print(sum(get_prio(c) for c in compartments))
+    print(sum(get_prio(char) for char in (c.pop() for c in (set(line[:len(line) // 2]).intersection(set(line[len(line) // 2:])) for line in get_input('./input/input03.txt', '\n')))))
 
 
 def part2():
-    print('')
+    print(sum([(*range(-38, 59), *range(1, 27))[ord(set.intersection(*map(set, L)).pop())] for L in zip(*[map(list, open('./input/input03.txt').read().split()[i::3])for i in (0, 1, 2)])]))
 
 
 if __name__ == "__main__":
