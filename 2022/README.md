@@ -4,8 +4,8 @@ This repository contains solutions for [Advent of Code 2022](https://adventofcod
 
 * Day 01: ✅
 * Day 02: ✅
-* Day 03: ❌
-* Day 04: ❌
+* Day 03: ✅
+* Day 04: ✅
 * Day 05: ❌
 * Day 06: ❌
 * Day 07: ❌
