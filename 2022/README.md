@@ -7,7 +7,7 @@ This repository contains solutions for [Advent of Code 2022](https://adventofcod
 * Day 03: ✅
 * Day 04: ✅
 * Day 05: ✅
-* Day 06: ❌
+* Day 06: ✅
 * Day 07: ❌
 * Day 08: ❌
 * Day 09: ❌
