@@ -2,7 +2,7 @@ from lib import get_input
 
 
 def part1():
-    print(max([sum(list(map(int, line.split('\n')))) for line in get_input('./input/input01.txt', '\n\n')]))
+    print(max([sum(list(map(int, el.split('\n')))) for el in get_input('./input/input01.txt', '\n\n')]))
 
 
 def part2():

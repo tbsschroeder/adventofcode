@@ -11,10 +11,10 @@ This repository contains solutions for [Advent of Code 2022](https://adventofcod
 * Day 07: ✅
 * Day 08: ✅
 * Day 09: ✅
-* Day 10: ❌
-* Day 11: ❌
-* Day 12: ❌
-* Day 13: ❌
+* Day 10: ✅
+* Day 11: ✅
+* Day 12: ✅
+* Day 13: ✅
 * Day 14: ❌
 * Day 15: ❌
 * Day 16: ❌

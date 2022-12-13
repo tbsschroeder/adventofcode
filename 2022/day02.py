@@ -13,7 +13,7 @@ def part1():
         'C Y': 2,  # Scissors - Paper     2 and loss 0
         'C Z': 6,  # Scissors - Scissor   3 and draw 3
     }
-    print(sum([strategy[line] for line in get_input('./input/input02.txt', '\n')]))
+    print(sum([strategy[game] for game in get_input('./input/input02.txt', '\n')]))
 
 
 def part2():
@@ -28,7 +28,7 @@ def part2():
         'C Y': 6,  # Scissors - draw -> scissor  3 and 3
         'C Z': 7,  # Scissors - win ->  rock     1 and 6
     }
-    print(sum([strategy[line] for line in get_input('./input/input02.txt', '\n')]))
+    print(sum([strategy[game] for game in get_input('./input/input02.txt', '\n')]))
 
 
 if __name__ == "__main__":
