@@ -22,8 +22,8 @@ This repository contains solutions for [Advent of Code 2022](https://adventofcod
 * Day 18: ✅
 * Day 19: ✅
 * Day 20: ✅
-* Day 21: ❌
-* Day 22: ❌
-* Day 23: ❌
+* Day 21: ✅
+* Day 22: ✅
+* Day 23: ✅
 * Day 24: ❌
 * Day 25: ❌
