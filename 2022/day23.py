@@ -53,12 +53,13 @@ def part1and2():
             h = max([x[1] for x in locations]) - min([x[1] for x in locations]) + 1
             part1 = w * h - len(locations)
         old_locations = locations.copy()
-        # Part 3
+        
         checks.append(checks.pop(0))
 
     part2 = k
 
-    print(part1, part2)
+    print(part1)
+    print(part2)
 
 
 if __name__ == "__main__":
